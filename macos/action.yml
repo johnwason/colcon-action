@@ -63,7 +63,7 @@ runs:
       run: |
         ${{ inputs.before-script }}
         mkdir -p $GITHUB_WORKSPACE/upstream_ws/src
-        vcs import --input "$GITHUB_WORKSPACE/${{ inputs.target-path }}/${{ inputs.vcs-file }}" $GITHUB_WORKSPACE/upstream_ws/src
+        vcs import --recursive --input "$GITHUB_WORKSPACE/${{ inputs.target-path }}/${{ inputs.vcs-file }}" $GITHUB_WORKSPACE/upstream_ws/src
         if [ $? -ge 1 ]; then return 1; fi
         cd $GITHUB_WORKSPACE/upstream_ws
         if [ "${{ inputs.rosdep-enabled }}" = "true" ]]; then
